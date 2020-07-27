@@ -5,6 +5,8 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 
+use Selective\BasePath\BasePathMiddleware;
+
 return [
     'settings' => function () {
         return require __DIR__ . '/settings.php';
@@ -29,4 +31,7 @@ return [
         );
     },
 
+    BasePathMiddleware::class => function (ContainerInterface $container) {
+        return new BasePathMiddleware($container->get(App::class));
+    },
 ];
