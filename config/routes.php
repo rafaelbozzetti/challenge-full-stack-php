@@ -3,5 +3,12 @@
 use Slim\App;
 
 return function (App $app) {
-    // empty
+    $app->get('/', function (
+        ServerRequestInterface $request,
+        ResponseInterface $response
+    ) {
+        $response->getBody()->write('Hello, World!');
+
+        return $response;
+    });
 };
