@@ -1,6 +1,7 @@
 <?php
 
 use Selective\BasePath\BasePathMiddleware;
+use Slim\Views\TwigMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
 
@@ -10,6 +11,8 @@ return function (App $app) {
 
     // Add the Slim built-in routing middleware
     $app->addRoutingMiddleware();
+
+    $app->add(TwigMiddleware::class);
 
     $app->add(BasePathMiddleware::class);
 
