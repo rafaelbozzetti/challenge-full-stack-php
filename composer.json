@@ -1,0 +1,16 @@
+{
+    "name": "grupoa/challenger",
+    "description": "A students manager to GrupoA",
+    "authors": [
+        {
+            "name": "Rafael Bozzetti",
+            "email": "rafaelbozzetti@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Grupoa\\": "src/"
+        }
+    },
+    "require": {}
+}
