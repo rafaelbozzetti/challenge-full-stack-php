@@ -12,13 +12,23 @@
             "App\\": "src/"
         }
     },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -rf public/bootstrap",
+            "rm -rf public/jquery",
+            "cp -R vendor/twbs/bootstrap/dist public/bootstrap",
+            "cp -R vendor/components/jquery public/jquery"
+        ]
+    },
     "require": {
         "slim/slim": "^4.5",
         "slim/psr7": "^1.1",
         "php-di/php-di": "^6.2",
         "slim/twig-view": "^3.1",
         "selective/basepath": "^1.0",
-        "symfony/http-foundation": "^5.1"
+        "symfony/http-foundation": "^5.1",
+        "twbs/bootstrap": "^4.5",
+        "components/jquery": "^3.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.2"
