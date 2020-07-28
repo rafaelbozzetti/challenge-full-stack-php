@@ -1,0 +1,59 @@
+
+{% extends "template.twig" %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                {% include "menu.twig" %}
+            </div>
+            <div class="col-10">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/students">Alunos</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Editar Aluno</li>
+                    </ol>
+                </nav>
+                <div class="card">
+                    <div class="card-body">
+                        {% include 'flash.twig' %}
+                        <form action="/students/edit" method="post"> 
+
+                            <input type="hidden" name="id" value="{{ student.id }}" />
+
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="name" name="name" value="{{ student.name }}" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" value="{{ student.email }}" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="ar">Registro Acadêmico</label>
+                                <input readonly type="text" name="ar" value="{{ student.ar }}" class="form-control" id="ar">
+                            </div>
+                            <div class="form-group">
+                                <label for="document">CPF</label>
+                                <input readonly type="text" name="document" value="{{ student.document }}" class="form-control" id="document">
+                            </div>
+
+                            <div class="fr">
+                                <a href="/students" class="btn btn-link"> Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#document').mask('000.000.000-00', {reverse: true});
+            $('#ar').mask('999999', {reverse: true});
+        });
+    </script>
+
+{% endblock %}
+

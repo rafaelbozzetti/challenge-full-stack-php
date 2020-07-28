@@ -2,36 +2,34 @@
 
 namespace App\Action\Student;
 
-use App\Domain\Student\Service\StudentCreator;
+use App\Domain\Student\Service\StudentUpdate;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class StudentEditAction
 {
-    private $studentCreator;
+    private $studentUpdate;
 
-    public function __construct(StudentCreator $studentCreator)
+    public function __construct(StudentUpdate $studentUpdate)
     {
-        $this->studentCreator = $studentCreator;
+        $this->studentUpdate = $studentUpdate;
     }
 
     public function __invoke(
         ServerRequestInterface $request, 
         ResponseInterface $response
     ): ResponseInterface {
-        // Collect input from the HTTP request
+
         $data = (array)$request->getParsedBody();
 
-        $studentId = $this->studentCreator->createStudent($data);
+        $studentId = $this->studentUpdate->updateStudent($data);
 
         $result = [
             'student_id' => $studentId
         ];
 
-        // $response->getBody()->write((string)json_encode($result));
+        header('Location: /students');
+        exit;
 
-        // return $response
-        //     ->withHeader('Content-Type', 'application/json')
-        //     ->withStatus(201);
     }
 }
