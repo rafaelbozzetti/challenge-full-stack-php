@@ -53,7 +53,8 @@ final class StudentListDataTableAction
 
         $params = (array)$request->getParsedBody();
 
-        $data = $this->studentListDataTable->listAllStudents(array());
+        $data = $this->studentListDataTable->listAllStudents($params);
+        $data['search_value'] = $params['search'];
         
         return $this->twig->render($response, 'students.twig', $data);
     }

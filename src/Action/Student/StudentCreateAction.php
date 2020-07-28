@@ -5,21 +5,25 @@ namespace App\Action\Student;
 use App\Domain\Student\Service\StudentCreator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use App\Responder\Responder;
 
 final class StudentCreateAction
 {
     private $studentCreator;
 
-    public function __construct(StudentCreator $studentCreator)
+    private $responder;
+
+    public function __construct(Responder $responder,  StudentCreator $studentCreator)
     {
         $this->studentCreator = $studentCreator;
+        $this->responder = $responder;
     }
 
     public function __invoke(
         ServerRequestInterface $request, 
         ResponseInterface $response
     ): ResponseInterface {
-        // Collect input from the HTTP request
+
         $data = (array)$request->getParsedBody();
 
         $studentId = $this->studentCreator->createStudent($data);
@@ -28,10 +32,9 @@ final class StudentCreateAction
             'student_id' => $studentId
         ];
 
-        // $response->getBody()->write((string)json_encode($result));
+        header('Location: /students');
+        exit;
 
-        // return $response
-        //     ->withHeader('Content-Type', 'application/json')
-        //     ->withStatus(201);
+        //return $this->responder->redirect($response, 'students');
     }
 }

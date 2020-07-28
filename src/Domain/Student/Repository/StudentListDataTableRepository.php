@@ -45,6 +45,18 @@ class StudentListDataTableRepository implements RepositoryInterface
         $query = $this->queryFactory->newSelect('students');
         $query->select(['students.*']);
 
+        if($params['search']) {
+            $value = $params['search'];
+            $params = [];
+            $params['search']['value'] = $value;
+            $params['columns'] = [
+                ['data' => 'name', 'searchable'=>1],
+                ['data' => 'document', 'searchable'=>1],
+                ['data' => 'ar', 'searchable'=>1],
+                ['data' => 'email', 'searchable'=>1]
+            ];
+        }
+
         return $this->dataTable->load($query, $params);
     }
 }

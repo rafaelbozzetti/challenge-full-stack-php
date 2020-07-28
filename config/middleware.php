@@ -16,8 +16,8 @@ return function (App $app) {
 
     $app->add(BasePathMiddleware::class);
     
-    $app->add(ErrorMiddleware::class);
-
     $app->addRoutingMiddleware();
+
+    $app->add(ErrorMiddleware::class);
     
 };
