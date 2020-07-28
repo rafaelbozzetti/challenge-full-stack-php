@@ -2,36 +2,29 @@
 
 namespace App\Action\Student;
 
-use App\Domain\Student\Service\StudentCreator;
+use App\Domain\Student\Service\StudentRemove;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class StudentRemoveAction
 {
-    private $studentCreator;
+    private $studentRemove;
 
-    public function __construct(StudentCreator $studentCreator)
+    public function __construct(StudentRemove $studentRemove)
     {
-        $this->studentCreator = $studentCreator;
+        $this->studentRemove = $studentRemove;
     }
 
     public function __invoke(
         ServerRequestInterface $request, 
         ResponseInterface $response
     ): ResponseInterface {
-        // Collect input from the HTTP request
+
         $data = (array)$request->getParsedBody();
 
-        $studentId = $this->studentCreator->createStudent($data);
+        $this->studentRemove->removeStudent($data);
 
-        $result = [
-            'student_id' => $studentId
-        ];
-
-        // $response->getBody()->write((string)json_encode($result));
-
-        // return $response
-        //     ->withHeader('Content-Type', 'application/json')
-        //     ->withStatus(201);
+        header('Location: /students');
+        exit;
     }
 }
