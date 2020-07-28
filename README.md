@@ -4,6 +4,12 @@ GrupoA Educação - Full Stack Web Developer PHP
 [![N|Solid](https://www.grupoa.com.br/hs-fs/hubfs/logo-grupoa.png?width=300&name=logo-grupoa.png)](https://www.grupoa.com.br) 
 
 
+### Requisitos
+
+* PHP 7.4+
+* MySQL 5.7+ or MariaDB
+* Composer (only for development)
+
 
 ```console
 git clone https://github.com/rafaelbozzetti/challenge-full-stack-php.git
