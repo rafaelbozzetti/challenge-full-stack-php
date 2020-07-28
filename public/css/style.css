@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 body {
-    background: #eef4ff;
+    background: #fff;
     -webkit-font-smoothing: antialiased;
 
 }
@@ -62,7 +62,7 @@ button {
     background: transparent url(../img/welcome.jpg) top left no-repeat;
     background-size: cover;
     height: 100%;
-    padding: 100px 50px 100px 50px;
+    padding: 150px 50px 150px 50px;
 }
 .welcome h1 {
     color: #5679b8;
