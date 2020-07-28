@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  db:
+    image: library/mysql:8.0.20
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=grupoa
+      - MYSQL_USER=grupoa
+      - MYSQL_PASSWORD=grupoa
+      - MYSQL_ROOT_PASSWORD=grupoa
+    volumes:
+      - "./resources/docker/config/my.cfg:/etc/mysql/conf.d/config-file.cnf"
+
+  ws:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DOCKER=1
+      - XDEBUG_CONFIG=remote_host=host.docker.internal
+      - MYSQL_DATABASE=grupoa
+      - MYSQL_USER=grupoa
+      - MYSQL_PASSWORD=grupoa
+      - MYSQL_HOST=db
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
