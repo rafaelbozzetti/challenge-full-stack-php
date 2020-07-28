@@ -16,17 +16,17 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                            <a href="/students/add" class="btn btn-primary" style="float:right;">
+                            <a href="/students/add" class="btn btn-primary" style="float:right;margin-top:10px;">
                                 Cadastrar Aluno
                             </a>                 
                         </div>
-                        <form class="form-inline">
+                        <form action="/students" class="form-inline" method="post">
                             <div class="form-group mb-2">
                                 
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
-                                <label for="inputPassword2" class="sr-only">Password</label>
-                                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                                <label for="search" class="sr-only">Procurar</label>
+                                <input type="text" value="{{ search_value }}" class="form-control" id="search" name="search" placeholder="Digite para procurar">
                             </div>
                             <button type="submit" class="btn btn-primary mb-2">Procurar</button>
                         </form>
