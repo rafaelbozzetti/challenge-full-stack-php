@@ -67,6 +67,9 @@ final class UserAuthMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
+        header('Location: /');
+        exit;
+
         return $this->responder->redirect($this->responder->createResponse(), 'login');
     }
 }
