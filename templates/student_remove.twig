@@ -2,7 +2,7 @@
 {% extends "template.twig" %}
 
 {% block content %}
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-2">
@@ -12,40 +12,43 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/students">Alunos</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastrar Aluno</li>
+                        <li class="breadcrumb-item active" aria-current="page">Excluir Aluno</li>
                     </ol>
-                </nav>
+                </nav>    
                 <div class="card">
                     <div class="card-body">
                         {% include 'flash.twig' %}
-                        <form action="/students/add" method="post"> 
+                        <form action="/students/remove" method="post"> 
+                            
+                            <input type="hidden" name="id" value="{{ student.id }}" />
+
                             <div class="form-group">
                                 <label for="name">Nome</label>
-                                <input type="name" name="name" class="form-control" id="name">
+                                <input readonly type="name" name="name" value="{{ student.name }}" class="form-control" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail</label>
-                                <input type="email" name="email" class="form-control" id="email">
+                                <input readonly type="email" name="email" value="{{ student.email }}" class="form-control" id="email">
                             </div>
                             <div class="form-group">
                                 <label for="ar">Registro Acadêmico</label>
-                                <input type="text" name="ar" class="form-control" id="ar">
+                                <input readonly type="text" name="ar" value="{{ student.ar }}" class="form-control" id="ar">
                             </div>
                             <div class="form-group">
                                 <label for="document">CPF</label>
-                                <input type="text" name="document" class="form-control" id="document">
+                                <input readonly type="text" name="document" value="{{ student.document }}" class="form-control" id="document">
                             </div>
 
                             <div class="fr">
                                 <a href="/students" class="btn btn-link"> Cancelar</a>
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary">Excluir</button>
                             </div>            
                         </form>
                     </div>
                 </div>
             </div>
-        </div>            
-    </div>        
+        </div>
+    </div>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#document').mask('000.000.000-00', {reverse: true});
