@@ -19,7 +19,7 @@ A configuração manual deve ser utilizada para rodar a aplicação na máquina 
  * Mysql Server
 
 Altere a configuração conforme necessário no arquivo:
-``config/settings.php`` nas linhas 55 e 57.
+``config/settings.php`` nas linhas 54 e 56.
 
 ```php
 $settings['db'] = [
@@ -44,11 +44,23 @@ php -S localhost:8000 -t public/
 
 O projeto pode rodar via docker, não sendo necessário a configuração manual.
 
+As configurações do arquivo ``config/settings.php`` são:
+
+```php
+$settings['db'] = [
+    'driver' => \Cake\Database\Driver\Mysql::class,
+    'host' => 'db',
+    'username' => 'grupoa',
+    'database' => 'grupoa',
+    'password' => 'grupoa',
+```
+
 ```console
 docker-composer up
 ```
 
 Aguarde os containers subirem completamente.
+
 
 ### Acesso
  * acesso: http://localhost:8000/
