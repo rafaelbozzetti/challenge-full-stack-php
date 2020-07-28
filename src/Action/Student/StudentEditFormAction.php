@@ -2,6 +2,7 @@
 
 namespace App\Action\Student;
 
+use App\Domain\Student\Service\StudentReader;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
@@ -10,9 +11,16 @@ final class StudentEditFormAction
 {
     private $twig;
 
-    public function __construct(Twig $twig)
+    /**
+     * @var StudentReader
+     */
+    private $studentReader;
+
+    public function __construct(Twig $twig, StudentReader $studentReader)
     {
         $this->twig = $twig;
+
+        $this->studentReader = $studentReader;
     }
 
     public function __invoke(
@@ -24,7 +32,7 @@ final class StudentEditFormAction
         $viewData = [];
         $studentId = (int)$args['id'];
 
-        // query student
+        $viewData['student'] = $this->studentReader->getStudentViewData($studentId);
         
         return $this->twig->render($response, 'student_edit.twig', $viewData);
     }
