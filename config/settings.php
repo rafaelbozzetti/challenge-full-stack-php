@@ -50,10 +50,10 @@ $settings['session'] = [
 
 $settings['db'] = [
     'driver' => \Cake\Database\Driver\Mysql::class,
-    'host' => 'localhost',
+    'host' => 'db',
     'database' => 'grupoa',
-    'username' => 'rafael',    
-    'password' => 'sawa',
+    'username' => 'grupoa',    
+    'password' => 'grupoa',
     'encoding' => 'utf8',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
