@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\Student;
 
 use App\Domain\Student\Service\StudentCreator;
 use Psr\Http\Message\ResponseInterface;
@@ -22,19 +22,20 @@ final class StudentCreateAction
         // Collect input from the HTTP request
         $data = (array)$request->getParsedBody();
 
-        // Invoke the Domain with inputs and retain the result
-        $studentId = $this->studentCreator->createStudent($data);
+        echo '<pre>';
+        print_r($data);
+        exit;
 
-        // Transform the result into the JSON representation
-        $result = [
-            'student_id' => $studentId
-        ];
+        // $studentId = $this->studentCreator->createStudent($data);
 
-        // Build the HTTP response
-        $response->getBody()->write((string)json_encode($result));
+        // $result = [
+        //     'student_id' => $studentId
+        // ];
 
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(201);
+        // $response->getBody()->write((string)json_encode($result));
+
+        // return $response
+        //     ->withHeader('Content-Type', 'application/json')
+        //     ->withStatus(201);
     }
 }
