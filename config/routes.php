@@ -12,8 +12,13 @@ return function (App $app) {
 
 
     //$app->get('/students', \App\Action\Students\StudentsListDataTableAction::class)->add(UserAuthMiddleware::class);
+
     $app->get('/students', \App\Action\Student\StudentListDataTableAction::class);
 
-    $app->post('/students', \App\Action\Student\StudentCreateAction::class);
+    $app->get('/students/add', \App\Action\Student\StudentCreateFormAction::class);
+
+    $app->post('/students/add', \App\Action\Student\StudentCreateAction::class);
+
+
 
 };
