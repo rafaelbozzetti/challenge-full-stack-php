@@ -51,7 +51,6 @@ final class UserAuth
             return null;
         }
 
-        // Map array to DTO
         $user = new UserAuthData();
         $user->id = (int)$userRow['id'];
         $user->email = (string)$userRow['email'];

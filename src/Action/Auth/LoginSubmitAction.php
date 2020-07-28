@@ -75,7 +75,7 @@ final class LoginSubmitAction
         }
 
         # workaround fuck
-        header('Location: /students');
+        header('Location: '. $url);
         exit;
         //return $this->responder->redirect($response, $url);
     }
