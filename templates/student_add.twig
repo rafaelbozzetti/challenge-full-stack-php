@@ -6,26 +6,33 @@
     <div class="card">
         <div class="card-body">
             <div class="card-title">
-                <b>Create a new user</b>
+                <b>Cadastro de Alunos</b>
             </div>    
         </div>
         <div class="card-body">
             {% include 'flash.twig' %}
-            <form action="/users/add" method="post"> 
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="name" name="name" class="form-control" id="name">
-            </div>            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Create</button>
-            <a href="/users" class="btn btn-link"> Go Back</a>
+            <form action="/students/add" method="post"> 
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="name" name="name" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="ar">Registro Acadêmico</label>
+                    <input type="text" name="ar" class="form-control" id="ar">
+                </div>
+                <div class="form-group">
+                    <label for="document">CPF</label>
+                    <input type="text" name="document" class="form-control" id="document">
+                </div>
+
+                <div class="fr">
+                    <a href="/students" class="btn btn-link"> Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>            
             </form>
         </div>
     </div>
