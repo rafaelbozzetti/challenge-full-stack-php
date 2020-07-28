@@ -1,5 +1,12 @@
 <?php
 
+$config = require __DIR__ . '/config/settings.php';
+
+$host = $config['db']['host'];
+$database = $config['db']['database'];
+$username = $config['db']['username'];
+$password = $config['db']['password'];
+
 return
 [
     'paths' => [
@@ -11,28 +18,28 @@ return
         'default_environment' => 'development',
         'production' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'grupoa',
-            'user' => 'root',
-            'pass' => 'sawa',
+            'host' => $host,
+            'name' => $database,
+            'user' => $username,
+            'pass' => $password,
             'port' => '3306',
             'charset' => 'utf8',
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'grupoa',
-            'user' => 'root',
-            'pass' => 'sawa',
+            'host' => $host,
+            'name' => $database,
+            'user' => $username,
+            'pass' => $password,
             'port' => '3306',
             'charset' => 'utf8',
         ],
         'testing' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'grupoa',
-            'user' => 'root',
-            'pass' => 'sawa',
+            'host' => $host,
+            'name' => $database,
+            'user' => $username,
+            'pass' => $password,
             'port' => '3306',
             'charset' => 'utf8',
         ]
