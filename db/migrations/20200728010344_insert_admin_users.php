@@ -18,7 +18,7 @@ final class InsertAdminUsers extends AbstractMigration
      */
     public function change(): void
     {
-        $password = sha1('admin');
+        $password = password_hash('admin', PASSWORD_DEFAULT);
         $builder = $this->getQueryBuilder();
         $builder
             ->insert(['email', 'password'])
