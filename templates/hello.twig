@@ -2,25 +2,37 @@
 
 {% block content %}
     
-    <div class="card">
-        <div class="card-body">
-            <div class="card-title">
-                <b>User Login</b>
-            </div>    
+
+    <div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <img src="/img/home_image.png" style="width:100%; height: auto;" />
         </div>
-        <div class="card-body">
-            <form action="/auth" method="post"> 
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <b>Acesso Restrito</b>
+                    </div>    
+                </div>
+                <div class="card-body">
+                    <form action="/auth" method="post"> 
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Acesso</button>
+                    </form>
+                </div>
+            </div>        
         </div>
     </div>
+    </div>
+
+
 
 {% endblock %}
