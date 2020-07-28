@@ -3,118 +3,68 @@ GrupoA Educação - Full Stack Web Developer PHP
 
 [![N|Solid](https://www.grupoa.com.br/hs-fs/hubfs/logo-grupoa.png?width=300&name=logo-grupoa.png)](https://www.grupoa.com.br) 
 
-O objetivo deste desafio é avaliar as competências técnicas dos candidatos a desenvolvedor Full Stack PHP na Maior Plataforma de Educação do Brasil, **Grupo A Educação**. 
-
-Será solicitado o desenvolvimento de uma Aplicação que realize a Matrícula do Aluno na Turma de Programação Web da instituição EdTech. Regras e requisitos técnicos estão detalhadas neste documento.
-
-# Especificações Técnicas
-- **Front End:** [Bootstrap](https://getbootstrap.com/) como framework de UI
-- **API:** PHP
-- **Banco de Dados:** Postgress ou MySQL
-- **Idioma de escrita do código:** Inglês
 
 
-# Requisitos
-## Contextualização
-Considere que uma Instituição de Ensino Superior precisa de uma solução para cadastrar e gerenciar matrículas de usuários em turmas online. Para realizar a matrícula, é necessário que o cadastro de aluno tenha sido realizado.
+```console
+git clone https://github.com/rafaelbozzetti/challenge-full-stack-php.git
+cd challenge-full-stack-php
+composer install
+```
 
-O desafio consiste em criar uma aplicação para o cadastro de usuários conforme os critérios de aceitação.
+### Configuração Manual
 
-## Mockups de interface
-Abaixo alguns mockoups de interface como um guia para a criação do front-end. Fique à vontade para usar sua criatividade e melhorias na criação do front-end.
+A configuração manual deve ser utilizada para rodar a aplicação na máquina local, deve-se ter atendido os seguinte requisitos:
 
-* Listagem de Alunos
-![Listagem de Alunos](/mockups/studants_list.png)
+ * php 7.4
+ * Mysql Server
 
-* Criar/Editar Aluno
-![Listagem de Alunos](/mockups/studants_save.png)
+Altere a configuração conforme necessário no arquivo:
+``config/settings.php`` nas linhas 55 e 57.
 
-## Histórias do Usuário
-- **Sendo** um usuário administrativo da Instituição
-- **Quero** gerenciar cadastros de alunos
-- **Para** que eu possa realizar a matrícula do aluno
+```php
+$settings['db'] = [
+    'driver' => \Cake\Database\Driver\Mysql::class,
+    'host' => 'localhost',
+    'username' => 'USUARIO MYSQL',
+    'database' => 'DATABASE',
+    'password' => 'SENHA MYSQL',
+```
+Com a database previamente criada, execute as migrations:
 
-### Critérios de aceite: 
+```console
+vendor/bin/phinx migrate 
+```
 
-#### Cenário: cadastrar novo aluno
-- **Dado** que estou na tela de Consulta de Alunos
-- **Quando** clico em Cadastrar Aluno
-- **Então** abre a tela de Cadastro do Aluno
-- **E** exibe os campos obrigatórios vazios
-####
-- **Dado** que inseri dados válidos nos campos
-- **Quando** clico em Salvar
-- **Então** cria o novo aluno na base
-- **E** retorna mensagem de sucesso
-####
-- **Dado** que inseri dados válidos nos campos
-- **Quando** clico em Cancelar
-- **Então** retorna para tela Consulta de Alunos
-- **E** não persiste a gravação dos dados no banco 
+Inicie a aplicação
+```console
+php -S localhost:8000 -t public/
+```
 
-#### Cenário: listar alunos cadastrados 
-- **Dado** que estou no Módulo Acadêmico
-- **Quando** clico no menu Alunos
-- **Então** abre a tela de Consulta de Alunos 
-- **E** exibe opção Cadastrar Aluno ao topo
-- **E** lista dados dos alunos cadastrados
-- **E** exibe opção Editar por aluno
-- **E** exibe opção Excluir por aluno
+### Configuração via docker
 
-#### Cenário editar cadastro de aluno
-- **Dado** que estou na listagem de alunos
-- **Quando** clico em Editar aluno
-- **Então** abre a tela de Cadastro do Aluno 
-- **E** exibe os campos do cadastro preenchidos
-- **E** habilita alteração dos campos editáveis
-####
-- **Dado** que estou na tela de Cadastro do Aluno
-- **Quando** clica em Salvar
-- **Então** grava os dados editáveis na base
-####
-- **Dado** que estou na tela de Cadastro do Aluno
-- **Quando** clica em Cancelar
-- **Então** retorna para a tela de Consulta de Alunos
-- **E** não persiste a gravação dos dados
+O projeto pode rodar via docker, não sendo necessário a configuração manual.
 
-#### Cenário: excluir cadastro de aluno
-- **Dado** que estou na listagem de alunos
-- **Quando** clico em Excluir aluno
-- **Então** exibe a modal de confirmação de exclusão
-####
-- **Dado** que estou na modal de confirmação de exclusão 
-- **Quando** clico em Confirmar
-- **Então** então exclui o registro do aluno
-####
-- **Dado** que estou na modal de confirmação de exclusão
-- **Quando** clico em Cancelar
-- **Então** então fecha a modal e não persiste a exclusão
+```console
+docker-composer up
+```
 
-## Campos obrigatórios:
-- **Nome** (editável)
-- **Email** (editável)
-- **RA** (não editável) (chave única)
-- **CPF** (não editável)
+Aguarde os containers subirem completamente.
 
-# Desejável
-- Testes unitários
-- Documentação da arquitetura de solução
+### Acesso
+ * acesso: http://localhost:8000/
+ * usuario: admin@grupoa.com.br
+ * senha: admin
 
-# Critérios de avaliação
-- Qualidade de escrita do código
-- Organização do projeto
-- Qualidade da API
-- Lógica da solução implementada
-- Qualidade da camada de persistência
-- Utilização do Git (quantidade e descrição dos commits, Git Flow, ...)
 
-# Instruções de entrega
-1. Crie um fork do repositório no seu GitHub
-2. Faça o push do código desenvolvido no seu Github
-3. Inclua um arquivo chamado COMMENTS.md explicando
-- Decisão da arquitetura utilizada
-- Lista de bibliotecas de terceiros utilizadas
-- O que você melhoraria se tivesse mais tempo
-- Quais requisitos obrigatórios que não foram entregues
-4. Informe ao recrutador quando concluir o desafio junto com o link do repositório
-5. Após revisão do projeto junto com a equipe de desevolvimento deixe seu repositório privado
+### Telas
+
+#### Login
+![Search Component](https://raw.githubusercontent.com/rafaelbozzetti/challenge-full-stack-php/master/mockups/login.png)
+
+#### Listagem Alunos
+![Search Component](https://raw.githubusercontent.com/rafaelbozzetti/challenge-full-stack-php/master/mockups/listagem.png)
+
+#### Cadastro Alunos
+![Search Component](https://raw.githubusercontent.com/rafaelbozzetti/challenge-full-stack-php/master/mockups/cadastro.png)
+
+ 
