@@ -22,4 +22,4 @@ Utilizaria uma abordagem diferente da entregue. Manteria no Backend em PHP somen
 
 - A validação do registro acadêmico duplicado ficou faltando.
 - As exceções disparadas na validação dos formulários não foram tratadas de forma a ser mais amigável ao usuário.
-- Docker: Estou executando as migracoes do banco sempre que a instancia do docker sobe, por algum motivo após executar as migrações a instancia está sendo finalizada. As mesmas estão sendo executadas via shellscript no ENTRYPOINT. Até o momento do commit isso não foi resolvido.
+- Docker: Estou executando as migrações do banco sempre que a instância do docker sobe. As mesmas são executadas via shellscript no ENTRYPOINT (phinx.sh). No primeiro "docker-composer up" parece que o banco não sobe a tempo das migrations serem executadas, o que causa um erro e talvez seja necessário rodar o "docker-composer up" uma segunda vez.

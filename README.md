@@ -62,6 +62,7 @@ $settings['db'] = [
 ```
 
 ```console
+docker-composer build
 docker-composer up
 ```
 

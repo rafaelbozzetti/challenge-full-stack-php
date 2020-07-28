@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sleep 5
+sleep 10
 
 if [ $# -eq 0 ]; then
   vendor/bin/phinx migrate
