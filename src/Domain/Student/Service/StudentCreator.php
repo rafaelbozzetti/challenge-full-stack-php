@@ -34,7 +34,6 @@ final class StudentCreator
      */
     public function createStudent(array $data): int
     {
-        // Input validation
         $this->validateNewStudent($data);
 
         // Insert student
@@ -61,14 +60,22 @@ final class StudentCreator
 
         // Here you can also use your preferred validation library
 
-        if (empty($data['studentname'])) {
-            $errors['studentname'] = 'Input required';
+        if (empty($data['name'])) {
+            $errors['name'] = 'Input required';
         }
 
         if (empty($data['email'])) {
             $errors['email'] = 'Input required';
         } elseif (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
             $errors['email'] = 'Invalid email address';
+        }
+
+        if (empty($data['ar'])) {
+            $errors['ar'] = 'Input required';
+        }
+
+        if (empty($data['document'])) {
+            $errors['document'] = 'Input required';
         }
 
         if ($errors) {

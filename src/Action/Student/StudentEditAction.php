@@ -6,7 +6,7 @@ use App\Domain\Student\Service\StudentCreator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class StudentCreateAction
+final class StudentEditAction
 {
     private $studentCreator;
 
